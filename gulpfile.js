@@ -1,6 +1,7 @@
 const gulp = require('gulp');
       sass = require('gulp-sass');
       autoprefixer = require('gulp-autoprefixer');
+      csscomb = require('gulp-csscomb');
       browserSync = require('browser-sync').create();
 
 const paths = {
@@ -22,8 +23,18 @@ function style(){
     .pipe(sass({
         'include css': true
     }).on('error', sass.logError))
+        //Réordonner les propriétés
+        .pipe(csscomb())
     //Ajouter automatiquement les préfixes CSS3
-    .pipe(autoprefixer("last 2 versions", "> 1%", "Explorer 7", "Android 2"))
+    .pipe(autoprefixer("last 2 versions", "> 1%", "Explorer 7", "Android 2", "Android 2.3",
+    "Android >= 4",
+    "Chrome >= 20",
+    "Firefox >= 24", // Firefox 24 is the latest ESR
+    "Explorer >= 8",
+    "iOS >= 6",
+    "Opera >= 12",
+    "Safari >= 6"))
+
     //Où puis-je sauvegarder le scss compilé ?
     .pipe(gulp.dest(paths.css.dest))
     //transférer les modifications sur tous les navigateurs
