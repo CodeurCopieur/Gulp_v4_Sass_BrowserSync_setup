@@ -8,7 +8,7 @@ Si vous venez d'une version précédente de Gulp, vous avez peut-être remarqué
 #Installation
 =============
 
-Installez les dépendances (gulp, gulp-sass, browser-sync)
+Installez les dépendances (gulp, gulp-sass, browser-sync, gulp-autoprefixer)
 
 ```
 $ npm install
