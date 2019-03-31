@@ -3,6 +3,8 @@ const gulp = require('gulp');
       autoprefixer = require('gulp-autoprefixer');
       csscomb = require('gulp-csscomb');
       cssbeautify = require('gulp-cssbeautify');
+      notify = require('gulp-notify');
+      plumberNotifier = require('gulp-plumber-notifier');
       sourcemaps = require('gulp-sourcemaps');
       browserSync = require('browser-sync').create();
 
@@ -27,8 +29,8 @@ function style(){
     .pipe(sass({
         'include css': true
     }).on('error', sass.logError))
-        //Réordonner les propriétés
-        .pipe(csscomb())
+    //Réordonner les propriétés
+    .pipe(csscomb())
     //Ajouter automatiquement les préfixes CSS3
     .pipe(autoprefixer("last 2 versions", "> 1%", "Explorer 7", "Android 2", "Android 2.3",
     "Android >= 4",
@@ -40,6 +42,13 @@ function style(){
     "Safari >= 6"))
     //Ré-indenter et reformater 
     .pipe(cssbeautify({indent: '  '}))
+    .pipe(plumberNotifier())
+    .on('error', notify.onError(function (error) {
+        return {
+            title: 'Stylus',
+            message: error.message
+        };
+    }))
     //Où puis-je sauvegarder le scss compilé ?
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.css.dest))
