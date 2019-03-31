@@ -2,6 +2,7 @@ const gulp = require('gulp');
       sass = require('gulp-sass');
       autoprefixer = require('gulp-autoprefixer');
       csscomb = require('gulp-csscomb');
+      cssbeautify = require('gulp-cssbeautify');
       browserSync = require('browser-sync').create();
 
 const paths = {
@@ -34,7 +35,8 @@ function style(){
     "iOS >= 6",
     "Opera >= 12",
     "Safari >= 6"))
-
+    //Ré-indenter et reformater 
+    .pipe(cssbeautify({indent: '  '}))
     //Où puis-je sauvegarder le scss compilé ?
     .pipe(gulp.dest(paths.css.dest))
     //transférer les modifications sur tous les navigateurs
