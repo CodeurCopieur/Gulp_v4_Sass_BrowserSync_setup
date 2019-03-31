@@ -13,3 +13,12 @@ Installez les dépendances (gulp, gulp-sass, browser-sync)
 ```
 $ npm install
 ```
+
+#Run
+=============
+
+Ceci surveillera vos fichiers sass, les compilera et exécutera votre serveur de développement à l' adresse http: // localhost: 3000.
+
+```
+$ gulp watch
+```
