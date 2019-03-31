@@ -1,0 +1,24 @@
+{
+  "name": "g_sbs",
+  "version": "1.0.0",
+  "description": "Nouveau projet gulp version 4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codwerk/Gulp_v4_Sass_BrowserSync_setup.git"
+  },
+  "author": "codwerk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codwerk/Gulp_v4_Sass_BrowserSync_setup/issues"
+  },
+  "homepage": "https://github.com/codwerk/Gulp_v4_Sass_BrowserSync_setup#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2"
+  }
+}

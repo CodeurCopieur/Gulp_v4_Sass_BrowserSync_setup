@@ -1,0 +1,22 @@
+
+$color: #fff;
+
+@mixin test($var1){
+    font-size: $var1;
+}
+
+%test-2 {
+    color: $color; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    background: #262626;
+    body{
+        h1 {
+           @extend %test-2;
+           @include test(5em);
+        }
+    }
+}
