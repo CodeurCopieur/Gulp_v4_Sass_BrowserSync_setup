@@ -3,6 +3,7 @@ const gulp = require('gulp');
       autoprefixer = require('gulp-autoprefixer');
       csscomb = require('gulp-csscomb');
       cssbeautify = require('gulp-cssbeautify');
+      sourcemaps = require('gulp-sourcemaps');
       browserSync = require('browser-sync').create();
 
 const paths = {
@@ -20,6 +21,8 @@ const paths = {
 function style(){
     //où est mon fichier scss
     return gulp.src(paths.css.src)
+    //
+    .pipe(sourcemaps.init())
     //passer ce fichier par le compilateur sass
     .pipe(sass({
         'include css': true
@@ -38,6 +41,7 @@ function style(){
     //Ré-indenter et reformater 
     .pipe(cssbeautify({indent: '  '}))
     //Où puis-je sauvegarder le scss compilé ?
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.css.dest))
     //transférer les modifications sur tous les navigateurs
     .pipe(browserSync.stream());
