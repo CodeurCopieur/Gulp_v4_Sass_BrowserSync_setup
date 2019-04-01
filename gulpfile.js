@@ -49,7 +49,10 @@ function watch() {
     browserSync.init({
         server: {
             baseDir: './build'
-        }
+        },
+        notify: true,
+        port: 8001
+
     });
     gulp.watch(paths.css.src, style);
     gulp.watch(paths.html.dest).on('change', browserSync.reload);
