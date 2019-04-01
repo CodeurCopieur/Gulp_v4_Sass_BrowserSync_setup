@@ -25,7 +25,7 @@ function style(){
     /* ici les plugins Gulp à executer */
     .pipe(sourcemaps.init())
     //passer ce fichier par le compilateur sass
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({ 'include css': true }).on('error', sass.logError))
     //Réordonner les propriétés
     .pipe(csscomb())
     //Ajouter automatiquement les préfixes CSS3
