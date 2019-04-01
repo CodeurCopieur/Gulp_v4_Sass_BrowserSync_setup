@@ -1,6 +1,7 @@
 const gulp = require('gulp');
       sass = require('gulp-sass');
       autoprefixer = require('gulp-autoprefixer');
+      notify = require('gulp-notify');
       csscomb = require('gulp-csscomb');
       cssbeautify = require('gulp-cssbeautify');
       sourcemaps = require('gulp-sourcemaps');
@@ -11,7 +12,7 @@ const paths = {
         dest: 'build/*.html'
     },
     css: {
-        src : 'src/scss/**/*.scss',
+        src : ['./src/scss/**/*.scss'],
         dest : 'build/assets/css'
     }
 }
@@ -21,23 +22,17 @@ const paths = {
 function style(){
     //où est mon fichier scss
     return gulp.src(paths.css.src)
-    //
+    /* ici les plugins Gulp à executer */
     .pipe(sourcemaps.init())
     //passer ce fichier par le compilateur sass
-    .pipe(sass({
-        'include css': true
-    }).on('error', sass.logError))
-        //Réordonner les propriétés
-        .pipe(csscomb())
+    .pipe(sass().on('error', sass.logError))
+    //Réordonner les propriétés
+    .pipe(csscomb())
     //Ajouter automatiquement les préfixes CSS3
-    .pipe(autoprefixer("last 2 versions", "> 1%", "Explorer 7", "Android 2", "Android 2.3",
-    "Android >= 4",
-    "Chrome >= 20",
-    "Firefox >= 24", // Firefox 24 is the latest ESR
-    "Explorer >= 8",
-    "iOS >= 6",
-    "Opera >= 12",
-    "Safari >= 6"))
+    .pipe(autoprefixer('last 2 version', '> 1%', 'ie 9', 'ie 8'))
+    .on("error", notify.onError({
+        title: "stile"
+    }))
     //Ré-indenter et reformater 
     .pipe(cssbeautify({indent: '  '}))
     //Où puis-je sauvegarder le scss compilé ?
