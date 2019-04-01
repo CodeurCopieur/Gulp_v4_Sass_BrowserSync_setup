@@ -47,6 +47,8 @@ function style(){
     .pipe(browserSync.stream());
 }
 
+const build = gulp.series(gulp.parallel(style, watch));
+
 // Watch Sass & Serve
 function watch() {
     browserSync.init({
@@ -59,4 +61,7 @@ function watch() {
 }
 
 exports.style = style;
+exports.build = build;
 exports.watch = watch;
+
+gulp.task('default', build);
