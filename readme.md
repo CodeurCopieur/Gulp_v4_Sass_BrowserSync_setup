@@ -20,5 +20,5 @@ $ npm install
 Ceci surveillera vos fichiers sass, les compilera et exécutera votre serveur de développement à l' adresse http: // localhost: 3000.
 
 ```
-$ gulp watch
+$ gulp build
 ```
