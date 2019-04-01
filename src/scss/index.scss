@@ -1,5 +1,4 @@
-
-$color: #fff;
+$color: #cef5eb;
 
 @mixin test($var1){
     font-size: $var1;
@@ -12,11 +11,19 @@ $color: #fff;
 * {
     margin: 0;
     padding: 0;
-    background: #262626;
     body{
+        margin: 0;
+        display: flex;
+        background: rgb(97, 170, 230);
+        z-index: 1337;
+        position: relative;
+
         h1 {
            @extend %test-2;
            @include test(5em);
+            display: flex;
+            flex-direction: row;
+            transition: all .5s;
         }
     }
 }
